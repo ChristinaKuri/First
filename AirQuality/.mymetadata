@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="AirQuality"
+  id="myeclipse.1510540932239"
+  context-root="/AirQuality"
+  j2ee-spec="6.0"
+  archive="AirQuality.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
