@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.AirMapper">
+	<select id="getAll" resultMap="Airs">
+		select * from air_quality_index a
+		inner join district d on a.district_id = d.id
+		order by a.id
+		limit
+		#{i},#{s}
+	</select>
+
+	<resultMap type="Air" id="Airs">
+		<id property="id" column="id" />
+		<result property="district_id" column="district_id" />
+		<result property="monitor_time" column="monitor_time" />
+		<result property="pm10" column="pm10" />
+		<result property="pm25" column="pm25" />
+		<result property="monitoring_station" column="monitoring_station" />
+		<association property="district" javaType="District">
+			<id property="id" column="id" />
+			<result property="name" column="name" />
+		</association>
+	</resultMap>
+
+	<select id="count" resultType="int">
+		select count(*) from
+		air_quality_index
+	</select>
+
+	<insert id="addAir" parameterType="Air">
+		insert into
+		air_quality_index(district_id,monitor_time,pm10,pm25,monitoring_station)
+		values(#{district_id},#{monitor_time},#{pm10},#{pm25},#{monitoring_station})
+	</insert>
+	
+	<delete id="delAir" parameterType="int">
+		delete from air_quality_index where id = #{id}
+	</delete>
+</mapper>

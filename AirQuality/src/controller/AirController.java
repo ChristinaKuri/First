@@ -40,6 +40,7 @@ public class AirController {
 		}
 		int index = (pageindex - 1) * 5;
 		List<Air> airs = as.getAll(index, 5);
+		System.out.println("»ñµÃ£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡");
 		request.getSession().setAttribute("airs", airs);
 		request.getSession().setAttribute("pageindex", pageindex);
 		request.getSession().setAttribute("totalPageCount", totalPageCount);
